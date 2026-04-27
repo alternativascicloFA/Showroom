@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-04-24T17:01:30Z",
+    "updatedAt":  "2026-04-27T19:16:27Z",
     "site":  [
                  {
                      "plans":  [
@@ -207,6 +207,11 @@
                                        "type":  "A",
                                        "desc":  "Padres 2026 - Ekos Copaiba",
                                        "cod":  "262753"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Regalo Ekos Ryos Floresta",
+                                       "cod":  "226945"
                                    }
                                ],
                      "marca":  "Natura"
@@ -247,6 +252,11 @@
                                        "type":  "A",
                                        "desc":  "Padres 2026 - Tododia Acerola Exc SH",
                                        "cod":  "264792"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Exclusivo SH: Tododia Manzanilla y Lavanda II",
+                                       "cod":  "261364"
                                    }
                                ],
                      "marca":  "Natura"
@@ -352,6 +362,11 @@
                                        "type":  "A",
                                        "desc":  "Exclusivo SH: Labiales",
                                        "cod":  "257087"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Exclusivo SH: Labiales",
+                                       "cod":  "261218"
                                    }
                                ],
                      "marca":  "Avon"
