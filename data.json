@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-04-28T14:15:06Z",
+    "updatedAt":  "2026-04-28T18:49:20Z",
     "site":  [
                  {
                      "plans":  [
@@ -327,6 +327,11 @@
                                        "type":  "A",
                                        "desc":  "Exclusivo SH: Combinado",
                                        "cod":  "257259"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Exclusivo SH: Combinado",
+                                       "cod":  "261215"
                                    }
                                ],
                      "marca":  "Avon"
