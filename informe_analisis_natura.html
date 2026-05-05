@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Eficiencia V4 - Natura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; }
+        .natura-orange { color: #FF6B00; }
+        .bg-natura-orange { background-color: #FF6B00; }
+        .card { background: white; border-radius: 1.5rem; border: 1px solid #F1F5F9; padding: 1.5rem; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body class="text-[#1F2937] p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto space-y-8">
+        
+        <div class="card bg-[#FFF5F0] border-b-4 border-[#FF6B00] !rounded-3xl">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-[10px] font-bold tracking-[0.2em] text-[#64748B] uppercase">Reporte Operativo V4</span>
+                <span class="text-[#FF6B00] font-semibold text-sm">Bien Estar Bien</span>
+            </div>
+            <h1 class="text-4xl font-light">Efectividad y <span class="font-bold natura-orange">Resolución Diaria</span></h1>
+        </div>
+
+        <!-- Efficiency Chart -->
+        <div class="card">
+            <h3 class="font-bold text-sm uppercase tracking-widest mb-6 text-[#FF6B00]">Histórico de Reclamos vs Soluciones (Últimos 30 días)</h3>
+            <img src="daily_efficiency.png" alt="Eficiencia Diaria" class="w-full rounded-xl border">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <div class="text-center">
+                    <span class="text-[10px] text-gray-400 uppercase block">Promedio Reclamos/Día</span>
+                    <span class="text-2xl font-bold text-red-600">3.0</span>
+                </div>
+                <div class="text-center">
+                    <span class="text-[10px] text-gray-400 uppercase block">Promedio Soluciones/Día</span>
+                    <span class="text-2xl font-bold text-green-600">7.2</span>
+                </div>
+                <div class="text-center">
+                    <span class="text-[10px] text-gray-400 uppercase block">Ratio de Atención</span>
+                    <span class="text-2xl font-bold text-[#FF6B00]">2.4 msgs/reclamo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Previous Rankings & Heatmaps -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card">
+                <h3 class="font-bold text-sm uppercase tracking-widest mb-4 border-b pb-2">Top 5 Reclamadores</h3>
+                <div class="space-y-2 text-sm text-gray-600">
+                    <div class="flex justify-between"><span>1. Leticia Perrone</span><span class="font-bold text-red-500">1.521 msgs</span></div>
+                    <div class="flex justify-between"><span>2. Gus Lluch</span><span class="font-bold text-red-500">1.150 msgs</span></div>
+                    <div class="flex justify-between"><span>3. Elizabeth Carretero</span><span class="font-bold">783 msgs</span></div>
+                </div>
+            </div>
+            <div class="card">
+                <h3 class="font-bold text-sm uppercase tracking-widest mb-4 border-b pb-2">Top 3 Solucionadores</h3>
+                <div class="space-y-2 text-sm text-gray-600">
+                    <div class="flex justify-between"><span>1. Cami Cassano</span><span class="font-bold text-green-600">1.046 rtas</span></div>
+                    <div class="flex justify-between"><span>2. Guardia NaturA</span><span class="font-bold">469 rtas</span></div>
+                    <div class="flex justify-between"><span>3. Pablo Rouco</span><span class="font-bold">466 rtas</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center text-[10px] text-gray-400 uppercase tracking-[0.4em] py-4">
+            Natura - Gestión Comercial & Eficiencia Operativa
+        </div>
+
+    </div>
+
+</body>
+</html>
