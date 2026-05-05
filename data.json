@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-05-05T13:26:24Z",
+    "updatedAt":  "2026-05-05T13:46:07Z",
     "site":  [
                  {
                      "plans":  [
@@ -412,6 +412,11 @@
                                        "type":  "A",
                                        "desc":  "Exclusivo SH: Avon Care Cuerpo",
                                        "cod":  "257086"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Exclusivo SH: Avon Care Cuerpo",
+                                       "cod":  "261210"
                                    }
                                ],
                      "marca":  "Avon"
