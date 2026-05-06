@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-05-05T14:45:59Z",
+    "updatedAt":  "2026-05-06T14:58:41Z",
     "site":  [
                  {
                      "plans":  [
@@ -112,6 +112,11 @@
                                        "type":  "A",
                                        "desc":  "Padres 2026 - Homem barba SI",
                                        "cod":  "252001"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Padres 2026 - Regalo Kaiak Urbe Barba",
+                                       "cod":  "227251"
                                    }
                                ],
                      "marca":  "Natura"
