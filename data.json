@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-05-06T21:29:02Z",
+    "updatedAt":  "2026-05-07T17:50:59Z",
     "site":  [
                  {
                      "plans":  [
@@ -297,6 +297,11 @@
                                        "type":  "A",
                                        "desc":  "Exclusivo SH: 300KM",
                                        "cod":  "257262"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Exclusivo SH: 300KM",
+                                       "cod":  "261211"
                                    }
                                ],
                      "marca":  "Avon"
