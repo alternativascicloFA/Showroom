@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-05-14T13:25:58Z",
+    "updatedAt":  "2026-05-14T13:31:56Z",
     "site":  [
                  {
                      "plans":  [
@@ -52,6 +52,11 @@
                                        "type":  "A",
                                        "desc":  "Padres 2026 - Paz e Humor + deo spray",
                                        "cod":  "251995"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Padres 2026 - Paz e Humor",
+                                       "cod":  "258564"
                                    }
                                ],
                      "marca":  "Natura"
