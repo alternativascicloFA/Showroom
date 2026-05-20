@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-05-14T13:35:55Z",
+    "updatedAt":  "2026-05-20T18:28:48Z",
     "site":  [
                  {
                      "plans":  [
@@ -42,6 +42,11 @@
                                        "type":  "A",
                                        "desc":  "Padres 2026 - Urbe Ind",
                                        "cod":  "251993"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Padres 2026 - Pulso Ind",
+                                       "cod":  "166855"
                                    }
                                ],
                      "marca":  "Natura"
@@ -92,6 +97,11 @@
                                        "type":  "A",
                                        "desc":  "Padres 2026 - Essencial Exclusivo",
                                        "cod":  "251988"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Padres 2026 - Essencial Exclusivo",
+                                       "cod":  "227264"
                                    }
                                ],
                      "marca":  "Natura"
