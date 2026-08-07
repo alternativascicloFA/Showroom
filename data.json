@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-08-07T17:25:40Z",
+    "updatedAt":  "2026-08-07T17:35:30Z",
     "site":  [
                  {
                      "plans":  [
@@ -65,8 +65,38 @@
                      "plans":  [
                                    {
                                        "type":  "A",
-                                       "desc":  "Regalo Bothânica Difusor",
+                                       "desc":  "Regalo Bothânica Difusor Aura Gingi",
                                        "cod":  "267495"
+                                   }
+                               ],
+                     "marca":  "Natura"
+                 },
+                 {
+                     "plans":  [
+                                   {
+                                       "type":  "A",
+                                       "desc":  "Regalo Bothânica Difusor Nobilis Antique",
+                                       "cod":  "267502"
+                                   }
+                               ],
+                     "marca":  "Natura"
+                 },
+                 {
+                     "plans":  [
+                                   {
+                                       "type":  "A",
+                                       "desc":  "Regalo Bothânica Difusor Cyan Serenum",
+                                       "cod":  "267508"
+                                   }
+                               ],
+                     "marca":  "Natura"
+                 },
+                 {
+                     "plans":  [
+                                   {
+                                       "type":  "A",
+                                       "desc":  "Regalo Bothânica Difusor Divinus Plantae",
+                                       "cod":  "267504"
                                    }
                                ],
                      "marca":  "Natura"
