@@ -264,7 +264,7 @@
 
         function getImg(marca, cod, type) {
             const folder = type === 'A' ? marca.trim() : 'Alternativas';
-            return `./Imagenes/${folder}/${cod}.jpg`;
+            return `./imagenes/${folder}/${cod}.jpg`;
         }
 
         async function shareImage(url, cod, desc) {
