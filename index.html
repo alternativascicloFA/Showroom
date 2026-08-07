@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Showroom Dia de la madre | Natura & Avon</title>
+    <title>Showroom Día de la madre | Natura & Avon</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- PapaParse -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -28,22 +25,22 @@
                 extend: {
                     colors: {
                         brand: {
-                            orange: '#FF6B00',
-                            orangeHover: '#E66000',
-                            light: '#FFF5F0',
-                            gray: '#F4F4F4',
+                            pink: '#E04886',        /* Rosa principal Día de la Madre */
+                            pinkHover: '#C83270',
+                            pinkLight: '#FDF2F7',
+                            gray: '#F8FAF9',
                         },
                         avon: {
                             primary: '#E2197C',
                             light: '#FCE7F3'
                         },
                         text: {
-                            main: '#1F2937',
+                            main: '#2D3748',
                             sec: '#64748B',
                             mut: '#9CA3AF'
                         },
                         ui: {
-                            app: '#F8FAFC',
+                            app: '#FFFDFE',
                             card: '#FFFFFF'
                         }
                     },
@@ -51,7 +48,7 @@
                         sans: ['NaturaAndCo', 'Montserrat', 'Inter', 'sans-serif']
                     },
                     boxShadow: {
-                        'soft': '0 2px 4px 0 rgba(0, 0, 0, 0.03), 0 1px 2px -1px rgba(0, 0, 0, 0.02)'
+                        'soft': '0 4px 20px -2px rgba(224, 72, 134, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.03)'
                     }
                 }
             }
@@ -65,11 +62,10 @@
             font-display: swap;
         }
 
-        /* Estética de Scrollbar para PC */
         ::-webkit-scrollbar { height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+        ::-webkit-scrollbar-thumb { background: #F472B6; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #E04886; }
 
         .animate-fade-in {
             animation: fadeIn 0.3s ease-in-out both;
@@ -79,7 +75,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Snap behavior for horizontal scroll */
         .snap-x { scroll-snap-type: x mandatory; }
         .snap-start { scroll-snap-align: start; }
     </style>
@@ -97,38 +92,57 @@
 <body class="bg-ui-app text-text-main font-sans antialiased min-h-screen flex flex-col">
 
     <!-- Header & Filtros -->
-    <header class="bg-white border-b border-gray-100 shadow-soft sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-5 relative">
+    <header class="bg-white border-b border-pink-100 shadow-soft sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 relative">
+            
+            <!-- Título y Marca -->
             <div class="flex-1 w-full">
                 <div class="flex items-center gap-3">
                     <div id="brand-logo-container" class="transition-all duration-300">
-                         <!-- Logo placeholder/text -->
-                         <span class="text-2xl font-bold tracking-tight text-brand-orange" id="brand-title">Natura</span>
+                         <span class="text-2xl font-bold tracking-tight text-brand-pink" id="brand-title">Natura</span>
                     </div>
-                    <div class="h-6 w-px bg-gray-200"></div>
-                    <h1 class="text-xl font-medium text-text-sec">Showroom Día de la madre</h1>
+                    <div class="h-6 w-px bg-pink-200"></div>
+                    <h1 class="text-xl font-semibold text-text-main">Showroom Día de la madre 🌸</h1>
                 </div>
                 <p class="text-text-sec text-[11px] mt-1.5 flex items-center gap-1.5 font-medium tracking-wider uppercase">
-                    <i data-lucide="clock" class="w-3.5 h-3.5 stroke-[2.5]"></i> Actualizado: <span id="last-update" class="text-text-mut whitespace-nowrap">Calculando...</span>
+                    <i data-lucide="clock" class="w-3.5 h-3.5 stroke-[2.5] text-brand-pink"></i> Actualizado: <span id="last-update" class="text-text-mut whitespace-nowrap">Calculando...</span>
                 </p>
             </div>
             
-            <div class="w-full md:w-80">
-                <label for="gerencia-select" class="block text-[10px] font-bold uppercase tracking-widest text-text-sec mb-1.5 pl-1">
-                    Gerencia de Ventas
-                </label>
-                <div class="relative">
-                    <select id="gerencia-select" class="w-full appearance-none bg-brand-gray border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-text-main focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange transition-colors cursor-pointer shadow-none">
-                        <option value="">Cargando gerencias...</option>
-                    </select>
-                    <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-text-sec pointer-events-none stroke-[2.5]"></i>
+            <!-- Filtros: Gerencia y Buscador -->
+            <div class="w-full lg:w-auto flex flex-col sm:flex-row items-center gap-3">
+                
+                <!-- Buscador por Código o Nombre -->
+                <div class="w-full sm:w-64">
+                    <label for="search-input" class="block text-[10px] font-bold uppercase tracking-widest text-text-sec mb-1 pl-1">
+                        Buscar por Cód / Producto
+                    </label>
+                    <div class="relative">
+                        <input type="text" id="search-input" placeholder="Ej: 12345 o Perfume..." 
+                               class="w-full bg-brand-gray border border-pink-200 rounded-xl pl-10 pr-4 py-2.5 text-sm font-medium text-text-main focus:outline-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 transition-all">
+                        <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-pink pointer-events-none stroke-[2.5]"></i>
+                    </div>
                 </div>
+
+                <!-- Selector Gerencia -->
+                <div class="w-full sm:w-64">
+                    <label for="gerencia-select" class="block text-[10px] font-bold uppercase tracking-widest text-text-sec mb-1 pl-1">
+                        Gerencia de Ventas
+                    </label>
+                    <div class="relative">
+                        <select id="gerencia-select" class="w-full appearance-none bg-brand-gray border border-pink-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-text-main focus:outline-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 transition-all cursor-pointer">
+                            <option value="">Cargando gerencias...</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-pink pointer-events-none stroke-[2.5]"></i>
+                    </div>
+                </div>
+
             </div>
         </div>
         
         <!-- Navigation Tabs -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 flex gap-8">
-            <button onclick="setTab('Natura')" id="tab-natura" class="py-3 px-1 text-sm font-bold uppercase tracking-widest text-brand-orange border-b-[3px] border-brand-orange transition-all duration-300">Natura</button>
+            <button onclick="setTab('Natura')" id="tab-natura" class="py-3 px-1 text-sm font-bold uppercase tracking-widest text-brand-pink border-b-[3px] border-brand-pink transition-all duration-300">Natura</button>
             <button onclick="setTab('Avon')" id="tab-avon" class="py-3 px-1 text-sm font-bold uppercase tracking-widest text-text-mut border-b-[3px] border-transparent hover:text-avon-primary transition-all duration-300">Avon</button>
         </div>
     </header>
@@ -138,17 +152,17 @@
         
         <!-- Loading State -->
         <div id="loading" class="flex flex-col justify-center items-center py-20">
-            <div id="spinner" class="animate-spin rounded-full h-12 w-12 border-[3px] border-brand-gray border-t-brand-orange"></div>
-            <p class="mt-5 text-brand-orange font-bold tracking-widest text-[10px] uppercase animate-pulse">Sincronizando Planes...</p>
+            <div id="spinner" class="animate-spin rounded-full h-12 w-12 border-[3px] border-pink-100 border-t-brand-pink"></div>
+            <p class="mt-5 text-brand-pink font-bold tracking-widest text-[10px] uppercase animate-pulse">Sincronizando Planes Día de la Madre...</p>
         </div>
 
         <!-- Empty State -->
         <div id="empty-state" class="hidden flex-col justify-center items-center py-24 text-center">
-            <div class="bg-white p-6 rounded-3xl shadow-soft border border-gray-100 mb-5">
-                <i data-lucide="search-x" class="w-12 h-12 text-text-mut stroke-[1.5]"></i>
+            <div class="bg-white p-6 rounded-3xl shadow-soft border border-pink-100 mb-5">
+                <i data-lucide="search-x" class="w-12 h-12 text-brand-pink/50 stroke-[1.5]"></i>
             </div>
             <h3 class="text-xl font-bold text-text-main mb-2 tracking-tight">Sin resultados</h3>
-            <p class="text-text-sec text-sm leading-relaxed max-w-md">No encontramos productos para esta selección. Prueba cambiando la marca o la gerencia.</p>
+            <p class="text-text-sec text-sm leading-relaxed max-w-md">No encontramos productos para esta búsqueda. Probá cambiando la palabra clave o limpiando el filtro.</p>
         </div>
 
         <!-- Product Grid -->
@@ -156,30 +170,29 @@
 
     </main>
 
-    <footer class="bg-white border-t border-gray-100 py-8 text-center px-4">
+    <footer class="bg-white border-t border-pink-100 py-8 text-center px-4">
         <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-text-mut">
             &copy; <span id="year"></span> Natura &Co <span class="mx-2 opacity-30">|</span> Bien Estar Bien
         </p>
     </footer>
 
     <script>
-        const SHEET_ID = '1_rLxNuEIP1JBxUJ3MZwse_RVZuu0WA52nNJ_Vp3vH3o';
-        
         let db = {
             site: [],
             gerencias: [],
-            cuotas: {} // Map: gerenciaId -> { codVenta: quantity }
+            cuotas: {}
         };
         
         let state = {
             tab: 'Natura',
-            gerenciaId: ''
+            gerenciaId: '',
+            searchQuery: ''
         };
 
         async function init() {
             try {
-                // Ahora cargamos un único archivo consolidado desde GitHub para evitar bloqueos corporativos
-                const response = await fetch('./data.json');
+                // Sello anti-caché
+                const response = await fetch('./data.json?v=' + Date.now());
                 if (!response.ok) throw new Error('No se encontró el archivo de datos');
                 
                 const data = await response.json();
@@ -190,6 +203,7 @@
 
                 updateLastUpdate(data.updatedAt);
                 populateGerencias();
+                setupSearch();
                 
                 document.getElementById('loading').classList.add('hidden');
                 render();
@@ -200,17 +214,15 @@
                     title: 'Sincronización pendiente',
                     text: 'Aún no se han sincronizado los datos desde la planilla original.',
                     icon: 'info',
-                    confirmButtonColor: '#FF6B00',
+                    confirmButtonColor: '#E04886',
                     customClass: { popup: 'rounded-3xl' }
                 });
             }
         }
 
-        // Se eliminan parseGerencias, parseCuotas, parseSite ya que el JSON viene limpio del script
-
         function populateGerencias() {
             const sel = document.getElementById('gerencia-select');
-            sel.innerHTML = '<option value="">Seleccionar Gerencia...</option>';
+            sel.innerHTML = '<option value="">Todas las Gerencias (Ver catálogo)</option>';
             db.gerencias.sort((a,b) => a.name.localeCompare(b.name)).forEach(g => {
                 const opt = document.createElement('option');
                 opt.value = g.id;
@@ -220,23 +232,30 @@
             sel.onchange = e => { state.gerenciaId = e.target.value; render(); };
         }
 
+        function setupSearch() {
+            const input = document.getElementById('search-input');
+            input.oninput = e => {
+                state.searchQuery = e.target.value.toLowerCase().trim();
+                render();
+            };
+        }
+
         function setTab(t) {
             state.tab = t;
             const isNatura = t === 'Natura';
             
-            // UI Updates
             const btnN = document.getElementById('tab-natura');
             const btnA = document.getElementById('tab-avon');
             const title = document.getElementById('brand-title');
             
             if(isNatura) {
-                btnN.className = "py-3 px-1 text-sm font-bold uppercase tracking-widest text-brand-orange border-b-[3px] border-brand-orange transition-all duration-300";
+                btnN.className = "py-3 px-1 text-sm font-bold uppercase tracking-widest text-brand-pink border-b-[3px] border-brand-pink transition-all duration-300";
                 btnA.className = "py-3 px-1 text-sm font-bold uppercase tracking-widest text-text-mut border-b-[3px] border-transparent hover:text-avon-primary transition-all duration-300";
                 title.textContent = "Natura";
-                title.className = "text-2xl font-bold tracking-tight text-brand-orange";
+                title.className = "text-2xl font-bold tracking-tight text-brand-pink";
             } else {
                 btnA.className = "py-3 px-1 text-sm font-bold uppercase tracking-widest text-avon-primary border-b-[3px] border-avon-primary transition-all duration-300";
-                btnN.className = "py-3 px-1 text-sm font-bold uppercase tracking-widest text-text-mut border-b-[3px] border-transparent hover:text-brand-orange transition-all duration-300";
+                btnN.className = "py-3 px-1 text-sm font-bold uppercase tracking-widest text-text-mut border-b-[3px] border-transparent hover:text-brand-pink transition-all duration-300";
                 title.textContent = "Avon";
                 title.className = "text-2xl font-bold tracking-tight text-avon-primary";
             }
@@ -245,7 +264,7 @@
 
         function getImg(marca, cod, type) {
             const folder = type === 'A' ? marca.trim() : 'Alternativas';
-            return `./imagenes/${folder}/${cod}.jpg`;
+            return `./Imagenes/${folder}/${cod}.jpg`;
         }
 
         async function shareImage(url, cod, desc) {
@@ -253,7 +272,6 @@
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             
             try {
-                // Si es movil y soporta share, usamos el menu nativo
                 if (isMobile && navigator.canShare && navigator.share) {
                     const response = await fetch(url);
                     const blob = await response.blob();
@@ -263,13 +281,12 @@
                         await navigator.share({
                             files: [file],
                             title: desc,
-                            text: `Mira este producto: ${desc} (Cód: ${cod})`
+                            text: `Mirá este regalo para Mamá: ${desc} (Cód: ${cod})`
                         });
                         return;
                     }
                 }
                 
-                // Fallback / Desktop: Descarga tradicional
                 const a = document.createElement('a');
                 a.href = url;
                 a.download = fileName;
@@ -291,7 +308,20 @@
             const empty = document.getElementById('empty-state');
             grid.innerHTML = '';
 
-            const filtered = db.site.filter(i => i.marca.trim().toLowerCase() === state.tab.trim().toLowerCase());
+            // 1. Filtrar por Marca
+            let filtered = db.site.filter(i => i.marca.trim().toLowerCase() === state.tab.trim().toLowerCase());
+
+            // 2. Filtrar por Buscador (Código o Nombre)
+            if (state.searchQuery) {
+                const q = state.searchQuery;
+                filtered = filtered.map(item => {
+                    const matchingPlans = item.plans.filter(p => 
+                        p.cod.toString().toLowerCase().includes(q) || 
+                        p.desc.toLowerCase().includes(q)
+                    );
+                    return matchingPlans.length > 0 ? { ...item, plans: matchingPlans } : null;
+                }).filter(Boolean);
+            }
 
             if (filtered.length === 0) {
                 grid.classList.add('hidden');
@@ -304,7 +334,7 @@
 
                 filtered.forEach((item, idx) => {
                     const card = document.createElement('div');
-                    card.className = "animate-fade-in bg-white rounded-2xl border border-gray-100 shadow-soft hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden";
+                    card.className = "animate-fade-in bg-white rounded-2xl border border-pink-100 shadow-soft hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden";
                     card.style.animationDelay = `${idx * 0.05}s`;
 
                     const carousel = document.createElement('div');
@@ -315,19 +345,38 @@
                         slide.className = "min-w-full snap-start p-5 flex flex-col";
                         
                         const isMain = plan.type === 'A';
-                        const badgeColor = isMain ? (state.tab === 'Natura' ? 'bg-brand-orange' : 'bg-avon-primary') : 'bg-gray-800';
+                        const badgeColor = isMain ? (state.tab === 'Natura' ? 'bg-brand-pink' : 'bg-avon-primary') : 'bg-gray-800';
                         
-                        let quotaText = "Consultar gerencia";
-                        let quotaClass = "text-text-mut";
+                        // Detalle de Cuotas por Gerencia
+                        let quotaHTML = "";
                         if (state.gerenciaId) {
                             const stock = db.cuotas[state.gerenciaId]?.[plan.cod];
                             if (stock !== undefined) {
-                                quotaText = stock > 0 ? `Disponibles: ${stock} unidades` : "SIN STOCK";
-                                quotaClass = stock > 0 ? (state.tab === 'Natura' ? 'text-brand-orange font-bold' : 'text-avon-primary font-bold') : "text-[#B91C1C] font-extrabold";
+                                if (stock > 0) {
+                                    quotaHTML = `
+                                        <div class="flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
+                                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+                                            <span class="text-[11px] font-bold">Cuota disponible: ${stock} un.</span>
+                                        </div>`;
+                                } else {
+                                    quotaHTML = `
+                                        <div class="flex items-center gap-1.5 text-rose-700 bg-rose-50 px-2.5 py-1 rounded-lg border border-rose-200">
+                                            <i data-lucide="x-circle" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+                                            <span class="text-[11px] font-extrabold uppercase">Sin cuota disponible</span>
+                                        </div>`;
+                                }
                             } else {
-                                quotaText = "CON STOCK";
-                                quotaClass = "text-green-600 font-bold";
+                                quotaHTML = `
+                                    <div class="flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
+                                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+                                        <span class="text-[11px] font-bold">CON CUOTA</span>
+                                    </div>`;
                             }
+                        } else {
+                            quotaHTML = `
+                                <span class="text-[10px] text-text-mut font-medium italic flex items-center gap-1">
+                                    <i data-lucide="info" class="w-3 h-3 text-brand-pink"></i> Elegí Gerencia para ver cuota
+                                </span>`;
                         }
 
                         const actionIcon = isMobile ? 'share-2' : 'download';
@@ -342,24 +391,23 @@
                                     </span>
                                 ` : ''}
 
-                                <!-- Botón Acción Dinámico -->
                                 <button onclick="shareImage('${imgPath}', '${plan.cod}', '${safeDesc}')" 
                                    title="${isMobile ? 'Compartir' : 'Descargar'}"
-                                   class="absolute top-2 right-2 z-20 w-8 h-8 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full text-text-main shadow-sm hover:bg-white transition-colors cursor-pointer">
+                                   class="absolute top-2 right-2 z-20 w-8 h-8 flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-full text-brand-pink shadow-sm hover:bg-brand-pink hover:text-white transition-all cursor-pointer border border-pink-100">
                                     <i data-lucide="${actionIcon}" class="w-4 h-4"></i>
                                 </button>
 
-                                <div class="aspect-square bg-brand-gray rounded-xl flex items-center justify-center p-6 border border-gray-50">
+                                <div class="aspect-square bg-brand-gray rounded-xl flex items-center justify-center p-6 border border-pink-50/60">
                                     <img src="${imgPath}" 
-                                         onerror="this.src='https://placehold.co/400x400/F4F4F4/9CA3AF?text=Próximamente'" 
+                                         onerror="this.src='https://placehold.co/400x400/FFF5F8/E04886?text=Próximamente'" 
                                          class="max-w-full max-h-full object-contain mix-blend-multiply">
                                 </div>
                             </div>
                             <div class="flex-1 flex flex-col">
-                                <span class="text-[10px] text-text-mut font-bold tracking-widest uppercase mb-1">Cód: ${plan.cod}</span>
+                                <span class="text-[10px] text-brand-pink font-bold tracking-widest uppercase mb-1">Cód: ${plan.cod}</span>
                                 <h4 class="text-sm font-bold text-text-main leading-tight mb-4 flex-1 line-clamp-2">${plan.desc}</h4>
-                                <div class="pt-4 border-t border-gray-50 flex items-center justify-between">
-                                    <span class="text-[11px] uppercase tracking-wider ${quotaClass}">${quotaText}</span>
+                                <div class="pt-3 border-t border-pink-100/60 flex items-center justify-between">
+                                    ${quotaHTML}
                                 </div>
                             </div>
                         `;
@@ -369,7 +417,7 @@
                     card.appendChild(carousel);
                     if (item.plans.length > 1) {
                         const info = document.createElement('div');
-                        info.className = "px-5 pb-4 text-[9px] font-bold uppercase tracking-[0.2em] text-text-mut flex items-center gap-2";
+                        info.className = "px-5 pb-4 text-[9px] font-bold uppercase tracking-[0.2em] text-brand-pink flex items-center gap-2";
                         info.innerHTML = `<i data-lucide="arrow-left-right" class="w-3"></i> Desliza para ver alternativas`;
                         card.appendChild(info);
                     }
@@ -389,4 +437,4 @@
         window.onload = init;
     </script>
 </body>
-</html> 
+</html>
