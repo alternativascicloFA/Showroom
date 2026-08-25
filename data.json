@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-08-25T14:10:19Z",
+    "updatedAt":  "2026-08-25T18:47:55Z",
     "site":  [
                  {
                      "plans":  [
@@ -512,6 +512,11 @@
                                        "type":  "A",
                                        "desc":  "Kit Perfumería Combinado",
                                        "cod":  "269189"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Exclusivo SH: Perfumería V",
+                                       "cod":  "268312"
                                    }
                                ],
                      "marca":  "Avon"
