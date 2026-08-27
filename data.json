@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-08-27T15:47:07Z",
+    "updatedAt":  "2026-08-27T15:59:00Z",
     "site":  [
                  {
                      "plans":  [
@@ -402,6 +402,11 @@
                                        "type":  "A",
                                        "desc":  "Regalo Tododia jabones en barra",
                                        "cod":  "267519"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Regalo Jabones en Barra x2",
+                                       "cod":  "276070"
                                    }
                                ],
                      "marca":  "Natura"
