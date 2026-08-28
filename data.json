@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-08-28T18:28:18Z",
+    "updatedAt":  "2026-08-28T18:46:48Z",
     "site":  [
                  {
                      "plans":  [
@@ -392,6 +392,11 @@
                                        "type":  "B",
                                        "desc":  "Regalo Tododia Hidratantes Corporales",
                                        "cod":  "276116"
+                                   },
+                                   {
+                                       "type":  "C",
+                                       "desc":  "Regalo Tododia Frutas Rojas",
+                                       "cod":  "276053"
                                    }
                                ],
                      "marca":  "Natura"
