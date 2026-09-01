@@ -14,7 +14,7 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- SheetJS (Exportar a Excel) -->
+    <!-- SheetJS (Generador de Excel) -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
     <!-- Fuentes de Marca -->
@@ -116,9 +116,9 @@
             <div class="w-full lg:w-auto flex flex-col sm:flex-row items-end sm:items-center gap-3">
                 
                 <!-- Buscador por Código o Nombre -->
-                <div class="w-full sm:w-56">
+                <div class="w-full sm:w-48">
                     <label for="search-input" class="block text-[10px] font-bold uppercase tracking-widest text-text-sec mb-1 pl-1">
-                        Buscar por Cód / Producto
+                        Buscar Cód / Producto
                     </label>
                     <div class="relative">
                         <input type="text" id="search-input" placeholder="Ej: 12345 o Perfume..." 
@@ -140,11 +140,11 @@
                     </div>
                 </div>
 
-                <!-- Botón Descargar Excel -->
+                <!-- BOTÓN DESCARGAR EXCEL -->
                 <div class="w-full sm:w-auto">
-                    <button onclick="exportToExcel()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-3 rounded-xl shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95">
+                    <button onclick="exportToExcel()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 h-[42px]">
                         <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
-                        <span>Descargar Excel</span>
+                        <span>Descargar en excel</span>
                     </button>
                 </div>
 
@@ -202,6 +202,7 @@
 
         async function init() {
             try {
+                // Sello anti-caché
                 const response = await fetch('./data.json?v=' + Date.now());
                 if (!response.ok) throw new Error('No se encontró el archivo de datos');
                 
@@ -312,6 +313,7 @@
             }
         }
 
+        // FUNCIÓN DESCARGA DE EXCEL (AHORA DESCARGA NATURA Y AVON JUNTOS)
         function exportToExcel() {
             if (!db.site || db.site.length === 0) {
                 Swal.fire({
@@ -323,56 +325,80 @@
                 return;
             }
 
-            let gerenciaNombre = "Todas las Gerencias";
-            if (state.gerenciaId) {
-                const gObj = db.gerencias.find(g => String(g.id) === String(state.gerenciaId));
-                if (gObj) gerenciaNombre = gObj.name;
-            }
+            const rows = [];
+            // Tomamos todos los ítems de la base de datos sin filtrar por solapa
+            let allItems = db.site;
 
-            let filtered = db.site.filter(i => i.marca.trim().toLowerCase() === state.tab.trim().toLowerCase());
+            const selectedGerenciaId = state.gerenciaId;
+            const gerenciasToProcess = selectedGerenciaId 
+                ? db.gerencias.filter(g => String(g.id) === String(selectedGerenciaId))
+                : db.gerencias;
 
-            const excelRows = [];
-
-            filtered.forEach(item => {
+            allItems.forEach(item => {
                 const planA = item.plans.find(p => p.type === 'A') || {};
                 const planB = item.plans.find(p => p.type === 'B') || {};
                 const planC = item.plans.find(p => p.type === 'C') || {};
                 const planD = item.plans.find(p => p.type === 'D') || {};
 
-                const getQuota = (cod) => {
-                    if (!cod) return "-";
-                    if (!state.gerenciaId) return "Elegí Gerencia";
-                    const stock = db.cuotas[state.gerenciaId]?.[cod];
-                    if (stock !== undefined) {
-                        return stock > 0 ? `${stock} un.` : "Sin cuota";
-                    }
-                    return "Disponible";
-                };
+                if (gerenciasToProcess.length > 0) {
+                    gerenciasToProcess.forEach(g => {
+                        const getStock = (cod) => {
+                            if (!cod) return '-';
+                            const stock = db.cuotas[g.id]?.[cod];
+                            return stock !== undefined ? `${stock} un.` : 'Disponible';
+                        };
 
-                excelRows.push({
-                    "Marca": item.marca,
-                    "Gerencia": gerenciaNombre,
-                    "Cód. Plan A": planA.cod || "",
-                    "Descripción Plan A": planA.desc || "",
-                    "Cuota Plan A": getQuota(planA.cod),
-                    "Cód. Plan B": planB.cod || "",
-                    "Descripción Plan B": planB.desc || "",
-                    "Cuota Plan B": getQuota(planB.cod),
-                    "Cód. Plan C": planC.cod || "",
-                    "Descripción Plan C": planC.desc || "",
-                    "Cuota Plan C": getQuota(planC.cod),
-                    "Cód. Plan D": planD.cod || "",
-                    "Descripción Plan D": planD.desc || "",
-                    "Cuota Plan D": getQuota(planD.cod)
-                });
+                        rows.push({
+                            'Marca': item.marca,
+                            'Gerencia': g.name,
+                            'Cód. Plan A': planA.cod || '',
+                            'Descripción Plan A': planA.desc || '',
+                            'Cuota Plan A': getStock(planA.cod),
+                            'Cód. Plan B': planB.cod || '',
+                            'Descripción Plan B': planB.desc || '',
+                            'Cuota Plan B': getStock(planB.cod),
+                            'Cód. Plan C': planC.cod || '',
+                            'Descripción Plan C': planC.desc || '',
+                            'Cuota Plan C': getStock(planC.cod),
+                            'Cód. Plan D': planD.cod || '',
+                            'Descripción Plan D': planD.desc || '',
+                            'Cuota Plan D': getStock(planD.cod)
+                        });
+                    });
+                } else {
+                    rows.push({
+                        'Marca': item.marca,
+                        'Gerencia': 'Todas',
+                        'Cód. Plan A': planA.cod || '',
+                        'Descripción Plan A': planA.desc || '',
+                        'Cuota Plan A': 'Disponible',
+                        'Cód. Plan B': planB.cod || '',
+                        'Descripción Plan B': planB.desc || '',
+                        'Cuota Plan B': 'Disponible',
+                        'Cód. Plan C': planC.cod || '',
+                        'Descripción Plan C': planC.desc || '',
+                        'Cuota Plan C': 'Disponible',
+                        'Cód. Plan D': planD.cod || '',
+                        'Descripción Plan D': planD.desc || '',
+                        'Cuota Plan D': 'Disponible'
+                    });
+                }
             });
 
-            const worksheet = XLSX.utils.json_to_sheet(excelRows);
+            const worksheet = XLSX.utils.json_to_sheet(rows);
+            worksheet['!cols'] = [
+                { wch: 10 }, { wch: 25 }, 
+                { wch: 12 }, { wch: 35 }, { wch: 14 },
+                { wch: 12 }, { wch: 35 }, { wch: 14 },
+                { wch: 12 }, { wch: 35 }, { wch: 14 },
+                { wch: 12 }, { wch: 35 }, { wch: 14 }
+            ];
+
             const workbook = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(workbook, worksheet, `Showroom ${state.tab}`);
+            XLSX.utils.book_append_sheet(workbook, worksheet, `Showroom Completo`);
 
             const dateStr = new Date().toISOString().slice(0, 10);
-            XLSX.writeFile(workbook, `Showroom_${state.tab}_Planes_y_Cuotas_${dateStr}.xlsx`);
+            XLSX.writeFile(workbook, `Showroom_Natura_y_Avon_${dateStr}.xlsx`);
         }
 
         function render() {
