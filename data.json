@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-09-04T20:53:35Z",
+    "updatedAt":  "2026-09-04T21:01:16Z",
     "site":  [
                  {
                      "plans":  [
@@ -27,6 +27,11 @@
                                        "type":  "A",
                                        "desc":  "Regalo Natura Aura Alba",
                                        "cod":  "276592"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Exclusivo SH: Ilía Jardín Secreto",
+                                       "cod":  "276060"
                                    }
                                ],
                      "marca":  "Natura"
@@ -147,6 +152,11 @@
                                        "type":  "A",
                                        "desc":  "Regalo Aura Alba femenino",
                                        "cod":  "276593"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Regalo Ilía Jardín Secreto",
+                                       "cod":  "276086"
                                    }
                                ],
                      "marca":  "Natura"
@@ -735,36 +745,6 @@
                                    }
                                ],
                      "marca":  "Avon"
-                 },
-                 {
-                     "plans":  [
-                                   {
-                                       "type":  "A",
-                                       "desc":  "Regalo Natura Aura Alba",
-                                       "cod":  "276592"
-                                   },
-                                   {
-                                       "type":  "B",
-                                       "desc":  "Exclusivo SH: Ilía Jardín Secreto",
-                                       "cod":  "276060"
-                                   }
-                               ],
-                     "marca":  "Natura"
-                 },
-                 {
-                     "plans":  [
-                                   {
-                                       "type":  "A",
-                                       "desc":  "Regalo Aura Alba femenino",
-                                       "cod":  "276593"
-                                   },
-                                   {
-                                       "type":  "B",
-                                       "desc":  "Regalo Ilía Jardín Secreto",
-                                       "cod":  "276086"
-                                   }
-                               ],
-                     "marca":  "Natura"
                  }
              ],
     "cuotas":  {
