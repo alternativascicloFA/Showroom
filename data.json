@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-09-04T21:13:00Z",
+    "updatedAt":  "2026-09-07T19:04:53Z",
     "site":  [
                  {
                      "plans":  [
@@ -205,11 +205,6 @@
                                    },
                                    {
                                        "type":  "C",
-                                       "desc":  "Regalo Humor 2x25 ml",
-                                       "cod":  "276142"
-                                   },
-                                   {
-                                       "type":  "D",
                                        "desc":  "Regalo Humor + Faces",
                                        "cod":  "269847"
                                    }
