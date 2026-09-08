@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-09-08T15:50:29Z",
+    "updatedAt":  "2026-09-08T19:36:03Z",
     "site":  [
                  {
                      "plans":  [
@@ -707,6 +707,11 @@
                                        "type":  "B",
                                        "desc":  "Exclusivo SH: Cuerpo III",
                                        "cod":  "268336"
+                                   },
+                                   {
+                                       "type":  "C",
+                                       "desc":  "Exclusivo SH: Cuerpo I",
+                                       "cod":  "268325"
                                    }
                                ],
                      "marca":  "Avon"
