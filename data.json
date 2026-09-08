@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-09-08T14:58:23Z",
+    "updatedAt":  "2026-09-08T15:50:29Z",
     "site":  [
                  {
                      "plans":  [
@@ -592,6 +592,11 @@
                                        "type":  "A",
                                        "desc":  "Kit Treselle",
                                        "cod":  "269133"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Exclusivo SH: Far Away Beyond",
+                                       "cod":  "268302"
                                    }
                                ],
                      "marca":  "Avon"
