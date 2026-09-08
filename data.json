@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-09-08T14:05:02Z",
+    "updatedAt":  "2026-09-08T14:58:23Z",
     "site":  [
                  {
                      "plans":  [
@@ -642,6 +642,11 @@
                                        "type":  "B",
                                        "desc":  "Exclusivo SH: Máscara para Pestañas",
                                        "cod":  "268284"
+                                   },
+                                   {
+                                       "type":  "C",
+                                       "desc":  "Exclusivo SH: Ojos",
+                                       "cod":  "268306"
                                    }
                                ],
                      "marca":  "Avon"
