@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-09-10T14:47:45Z",
+    "updatedAt":  "2026-09-10T14:52:41Z",
     "site":  [
                  {
                      "plans":  [
@@ -417,6 +417,11 @@
                                        "type":  "A",
                                        "desc":  "Regalo Tododia nuez pecán y cacao",
                                        "cod":  "267520"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Regalo Tododia Cereza y Avellana Manos",
+                                       "cod":  "276124"
                                    }
                                ],
                      "marca":  "Natura"
