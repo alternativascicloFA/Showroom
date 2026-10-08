@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Showroom Preventa 2026 | Natura & Avon</title>
+    <title>Preventa Navidad | Natura & Avon</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -108,16 +108,13 @@
                     </div>
                     <div class="h-6 w-px bg-gray-200"></div>
                     <h1 class="text-xl font-bold text-gray-900 flex items-center gap-2">
-                        Preventa Navidad 2026 🎄✨
+                        Preventa Navidad 🎄🎅
                     </h1>
                 </div>
-                <p class="text-gray-500 text-[11px] mt-1 flex items-center gap-1.5 font-semibold tracking-wider uppercase">
-                    <i data-lucide="clock" class="w-3.5 h-3.5 stroke-[2.5] text-brand-red"></i> Actualizado: <span id="last-update" class="text-gray-400 whitespace-nowrap">Calculando...</span>
-                </p>
             </div>
             
             <!-- Filtros -->
-            <div class="w-full lg:w-auto flex flex-col sm:flex-row items-end sm:items-center gap-3">
+            <div class="w-full lg:w-auto flex flex-col sm:flex-row items-end sm:items-center gap-3 mt-4 lg:mt-0">
                 
                 <!-- Buscador -->
                 <div class="w-full sm:w-48">
@@ -156,7 +153,7 @@
         </div>
         
         <!-- Tabs -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex gap-8 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex gap-8 border-t border-gray-100 mt-2 lg:mt-0">
             <button onclick="setTab('Natura')" id="tab-natura" class="py-3 px-1 text-sm font-bold uppercase tracking-widest text-brand-red border-b-[3px] border-brand-red transition-all duration-300">Natura</button>
             <button onclick="setTab('Avon')" id="tab-avon" class="py-3 px-1 text-sm font-bold uppercase tracking-widest text-gray-400 border-b-[3px] border-transparent hover:text-avon-primary transition-all duration-300">Avon</button>
         </div>
@@ -168,7 +165,7 @@
         <!-- Loading State -->
         <div id="loading" class="flex flex-col justify-center items-center py-20">
             <div id="spinner" class="animate-spin rounded-full h-12 w-12 border-[3px] border-white/20 border-t-yellow-400"></div>
-            <p class="mt-5 text-yellow-300 font-bold tracking-widest text-[10px] uppercase animate-pulse">Sincronizando Planes Preventa 2026...</p>
+            <p class="mt-5 text-yellow-300 font-bold tracking-widest text-[10px] uppercase animate-pulse">Sincronizando Planes Preventa Navidad...</p>
         </div>
 
         <!-- Empty State -->
@@ -209,7 +206,6 @@
                 db.gerencias = data.gerencias || [];
                 db.cuotas = data.cuotas || {};
 
-                updateLastUpdate(data.updatedAt);
                 populateGerencias();
                 setupSearch();
                 
@@ -289,7 +285,7 @@
                         await navigator.share({
                             files: [file],
                             title: desc,
-                            text: `Mirá este regalo de Preventa 2026 🎄: ${desc} (Cód: ${cod})`
+                            text: `Mirá este regalo de Preventa Navidad 🎄: ${desc} (Cód: ${cod})`
                         });
                         return;
                     }
@@ -390,10 +386,10 @@
             ];
 
             const workbook = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(workbook, worksheet, `Preventa 2026`);
+            XLSX.utils.book_append_sheet(workbook, worksheet, `Preventa Navidad`);
 
             const dateStr = new Date().toISOString().slice(0, 10);
-            XLSX.writeFile(workbook, `Showroom_Preventa_2026_Natura_y_Avon_${dateStr}.xlsx`);
+            XLSX.writeFile(workbook, `Showroom_Preventa_Navidad_${dateStr}.xlsx`);
         }
 
         function render() {
@@ -434,7 +430,6 @@
                     
                     item.plans.forEach(plan => {
                         const slide = document.createElement('div');
-                        // Reduje el padding de p-5 a p-4 para darle más ancho todavía a la imagen
                         slide.className = "min-w-full snap-start p-4 flex flex-col";
                         
                         const isMain = plan.type === 'A';
@@ -489,7 +484,6 @@
                                     <i data-lucide="${actionIcon}" class="w-4 h-4"></i>
                                 </button>
 
-                                <!-- ACÁ ESTA LA CORRECCIÓN: Le saqué el p-6, y la imagen ocupa el ancho total (w-full h-full object-contain) -->
                                 <div class="w-full aspect-square bg-white rounded-xl border border-gray-100 overflow-hidden flex items-center justify-center">
                                     <img src="${imgPath}" 
                                          onerror="this.src='https://placehold.co/400x400/FFF5F5/9B111E?text=Próximamente'" 
@@ -519,12 +513,6 @@
             }
             lucide.createIcons();
             document.getElementById('year').textContent = new Date().getFullYear();
-        }
-
-        function updateLastUpdate(isoDate) {
-            const d = isoDate ? new Date(isoDate) : new Date();
-            const fmt = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()} ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
-            document.getElementById('last-update').textContent = fmt;
         }
 
         window.onload = init;
