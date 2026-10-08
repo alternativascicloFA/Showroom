@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Showroom Día de la madre | Natura & Avon</title>
+    <title>Showroom Preventa 2026 | Natura & Avon</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -28,30 +28,27 @@
                 extend: {
                     colors: {
                         brand: {
-                            pink: '#E04886',        /* Rosa principal Día de la Madre */
-                            pinkHover: '#C83270',
-                            pinkLight: '#FDF2F7',
-                            gray: '#F8FAF9',
+                            red: '#9B111E',         /* Rojo Rubí Navideño */
+                            redHover: '#7A0C16',
+                            gold: '#D4AF37',        /* Dorado */
+                            green: '#1E4D2B',       /* Verde Pino */
+                            gray: '#F3F4F6',
                         },
                         avon: {
                             primary: '#E2197C',
                             light: '#FCE7F3'
                         },
                         text: {
-                            main: '#2D3748',
-                            sec: '#64748B',
+                            main: '#1F2937',
+                            sec: '#4B5563',
                             mut: '#9CA3AF'
-                        },
-                        ui: {
-                            app: '#FFFDFE',
-                            card: '#FFFFFF'
                         }
                     },
                     fontFamily: {
                         sans: ['NaturaAndCo', 'Montserrat', 'Inter', 'sans-serif']
                     },
                     boxShadow: {
-                        'soft': '0 4px 20px -2px rgba(224, 72, 134, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.03)'
+                        'festive': '0 10px 30px -5px rgba(0, 0, 0, 0.3), 0 0 15px rgba(212, 175, 55, 0.2)'
                     }
                 }
             }
@@ -65,10 +62,15 @@
             font-display: swap;
         }
 
+        /* Fondo Navideño en alta definición */
+        body {
+            background: radial-gradient(circle at top center, #BD1325 0%, #700913 50%, #3D0208 100%);
+            background-attachment: fixed;
+        }
+
         ::-webkit-scrollbar { height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #F472B6; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #E04886; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
 
         .animate-fade-in {
             animation: fadeIn 0.3s ease-in-out both;
@@ -92,58 +94,60 @@
     </script>
 </head>
 
-<body class="bg-ui-app text-text-main font-sans antialiased min-h-screen flex flex-col">
+<body class="text-text-main font-sans antialiased min-h-screen flex flex-col">
 
-    <!-- Header & Filtros -->
-    <header class="bg-white border-b border-pink-100 shadow-soft sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 relative">
+    <!-- Header Blanco Puro sin Transparencias -->
+    <header class="bg-white border-b-2 border-brand-gold shadow-festive sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 relative">
             
             <!-- Título y Marca -->
             <div class="flex-1 w-full">
                 <div class="flex items-center gap-3">
                     <div id="brand-logo-container" class="transition-all duration-300">
-                         <span class="text-2xl font-bold tracking-tight text-brand-pink" id="brand-title">Natura</span>
+                         <span class="text-2xl font-extrabold tracking-tight text-brand-red" id="brand-title">Natura</span>
                     </div>
-                    <div class="h-6 w-px bg-pink-200"></div>
-                    <h1 class="text-xl font-semibold text-text-main">Showroom Día de la madre 🌸</h1>
+                    <div class="h-6 w-px bg-gray-200"></div>
+                    <h1 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                        Showroom Preventa 2026 🎄✨
+                    </h1>
                 </div>
-                <p class="text-text-sec text-[11px] mt-1.5 flex items-center gap-1.5 font-medium tracking-wider uppercase">
-                    <i data-lucide="clock" class="w-3.5 h-3.5 stroke-[2.5] text-brand-pink"></i> Actualizado: <span id="last-update" class="text-text-mut whitespace-nowrap">Calculando...</span>
+                <p class="text-gray-500 text-[11px] mt-1 flex items-center gap-1.5 font-semibold tracking-wider uppercase">
+                    <i data-lucide="clock" class="w-3.5 h-3.5 stroke-[2.5] text-brand-red"></i> Actualizado: <span id="last-update" class="text-gray-400 whitespace-nowrap">Calculando...</span>
                 </p>
             </div>
             
-            <!-- Filtros: Gerencia, Buscador y Botón Excel -->
+            <!-- Filtros -->
             <div class="w-full lg:w-auto flex flex-col sm:flex-row items-end sm:items-center gap-3">
                 
-                <!-- Buscador por Código o Nombre -->
+                <!-- Buscador -->
                 <div class="w-full sm:w-48">
-                    <label for="search-input" class="block text-[10px] font-bold uppercase tracking-widest text-text-sec mb-1 pl-1">
+                    <label for="search-input" class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1 pl-1">
                         Buscar Cód / Producto
                     </label>
                     <div class="relative">
-                        <input type="text" id="search-input" placeholder="Ej: 12345 o Perfume..." 
-                               class="w-full bg-brand-gray border border-pink-200 rounded-xl pl-10 pr-4 py-2.5 text-sm font-medium text-text-main focus:outline-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 transition-all">
-                        <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-pink pointer-events-none stroke-[2.5]"></i>
+                        <input type="text" id="search-input" placeholder="Ej: 12345 o Regalo..." 
+                               class="w-full bg-brand-gray border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 text-sm font-medium text-gray-800 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 transition-all">
+                        <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-red pointer-events-none stroke-[2.5]"></i>
                     </div>
                 </div>
 
                 <!-- Selector Gerencia -->
                 <div class="w-full sm:w-56">
-                    <label for="gerencia-select" class="block text-[10px] font-bold uppercase tracking-widest text-text-sec mb-1 pl-1">
+                    <label for="gerencia-select" class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1 pl-1">
                         Gerencia de Ventas
                     </label>
                     <div class="relative">
-                        <select id="gerencia-select" class="w-full appearance-none bg-brand-gray border border-pink-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-text-main focus:outline-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 transition-all cursor-pointer">
+                        <select id="gerencia-select" class="w-full appearance-none bg-brand-gray border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-gray-800 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 transition-all cursor-pointer">
                             <option value="">Cargando gerencias...</option>
                         </select>
-                        <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-pink pointer-events-none stroke-[2.5]"></i>
+                        <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-red pointer-events-none stroke-[2.5]"></i>
                     </div>
                 </div>
 
-                <!-- BOTÓN DESCARGAR EXCEL -->
+                <!-- Botón Excel -->
                 <div class="w-full sm:w-auto">
-                    <button onclick="exportToExcel()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 h-[42px]">
-                        <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
+                    <button onclick="exportToExcel()" class="w-full bg-brand-green hover:bg-emerald-800 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 h-[42px] border border-emerald-600">
+                        <i data-lucide="file-spreadsheet" class="w-4 h-4 text-yellow-300"></i>
                         <span>Descargar en excel</span>
                     </button>
                 </div>
@@ -151,10 +155,10 @@
             </div>
         </div>
         
-        <!-- Navigation Tabs -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex gap-8">
-            <button onclick="setTab('Natura')" id="tab-natura" class="py-3 px-1 text-sm font-bold uppercase tracking-widest text-brand-pink border-b-[3px] border-brand-pink transition-all duration-300">Natura</button>
-            <button onclick="setTab('Avon')" id="tab-avon" class="py-3 px-1 text-sm font-bold uppercase tracking-widest text-text-mut border-b-[3px] border-transparent hover:text-avon-primary transition-all duration-300">Avon</button>
+        <!-- Tabs -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex gap-8 border-t border-gray-100">
+            <button onclick="setTab('Natura')" id="tab-natura" class="py-3 px-1 text-sm font-bold uppercase tracking-widest text-brand-red border-b-[3px] border-brand-red transition-all duration-300">Natura</button>
+            <button onclick="setTab('Avon')" id="tab-avon" class="py-3 px-1 text-sm font-bold uppercase tracking-widest text-gray-400 border-b-[3px] border-transparent hover:text-avon-primary transition-all duration-300">Avon</button>
         </div>
     </header>
 
@@ -163,17 +167,19 @@
         
         <!-- Loading State -->
         <div id="loading" class="flex flex-col justify-center items-center py-20">
-            <div id="spinner" class="animate-spin rounded-full h-12 w-12 border-[3px] border-pink-100 border-t-brand-pink"></div>
-            <p class="mt-5 text-brand-pink font-bold tracking-widest text-[10px] uppercase animate-pulse">Sincronizando Planes Día de la Madre...</p>
+            <div id="spinner" class="animate-spin rounded-full h-12 w-12 border-[3px] border-white/20 border-t-yellow-400"></div>
+            <p class="mt-5 text-yellow-300 font-bold tracking-widest text-[10px] uppercase animate-pulse">Sincronizando Planes Preventa 2026...</p>
         </div>
 
         <!-- Empty State -->
         <div id="empty-state" class="hidden flex-col justify-center items-center py-24 text-center">
-            <div class="bg-white p-6 rounded-3xl shadow-soft border border-pink-100 mb-5">
-                <i data-lucide="search-x" class="w-12 h-12 text-brand-pink/50 stroke-[1.5]"></i>
+            <div class="bg-white p-10 rounded-[2rem] shadow-2xl border border-yellow-500/30 max-w-lg mx-auto flex flex-col items-center">
+                <div class="bg-red-50 p-6 rounded-full mb-5">
+                    <i data-lucide="search-x" class="w-12 h-12 text-brand-red stroke-[1.5]"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2 tracking-tight">Sin resultados</h3>
+                <p class="text-gray-500 text-sm leading-relaxed max-w-md">No encontramos productos para esta búsqueda. Probá cambiando la palabra clave o limpiando el filtro.</p>
             </div>
-            <h3 class="text-xl font-bold text-text-main mb-2 tracking-tight">Sin resultados</h3>
-            <p class="text-text-sec text-sm leading-relaxed max-w-md">No encontramos productos para esta búsqueda. Probá cambiando la palabra clave o limpiando el filtro.</p>
         </div>
 
         <!-- Product Grid -->
@@ -181,28 +187,19 @@
 
     </main>
 
-    <footer class="bg-white border-t border-pink-100 py-8 text-center px-4">
-        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-text-mut">
+    <!-- Footer Blanco Puro -->
+    <footer class="bg-white border-t border-brand-gold/30 py-6 text-center px-4 mt-auto">
+        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500">
             &copy; <span id="year"></span> Natura &Co <span class="mx-2 opacity-30">|</span> Bien Estar Bien
         </p>
     </footer>
 
     <script>
-        let db = {
-            site: [],
-            gerencias: [],
-            cuotas: {}
-        };
-        
-        let state = {
-            tab: 'Natura',
-            gerenciaId: '',
-            searchQuery: ''
-        };
+        let db = { site: [], gerencias: [], cuotas: {} };
+        let state = { tab: 'Natura', gerenciaId: '', searchQuery: '' };
 
         async function init() {
             try {
-                // Sello anti-caché
                 const response = await fetch('./data.json?v=' + Date.now());
                 if (!response.ok) throw new Error('No se encontró el archivo de datos');
                 
@@ -225,7 +222,7 @@
                     title: 'Sincronización pendiente',
                     text: 'Aún no se han sincronizado los datos desde la planilla original.',
                     icon: 'info',
-                    confirmButtonColor: '#E04886',
+                    confirmButtonColor: '#9B111E',
                     customClass: { popup: 'rounded-3xl' }
                 });
             }
@@ -260,13 +257,13 @@
             const title = document.getElementById('brand-title');
             
             if(isNatura) {
-                btnN.className = "py-3 px-1 text-sm font-bold uppercase tracking-widest text-brand-pink border-b-[3px] border-brand-pink transition-all duration-300";
-                btnA.className = "py-3 px-1 text-sm font-bold uppercase tracking-widest text-text-mut border-b-[3px] border-transparent hover:text-avon-primary transition-all duration-300";
+                btnN.className = "py-3 px-1 text-sm font-bold uppercase tracking-widest text-brand-red border-b-[3px] border-brand-red transition-all duration-300";
+                btnA.className = "py-3 px-1 text-sm font-bold uppercase tracking-widest text-gray-400 border-b-[3px] border-transparent hover:text-avon-primary transition-all duration-300";
                 title.textContent = "Natura";
-                title.className = "text-2xl font-bold tracking-tight text-brand-pink";
+                title.className = "text-2xl font-bold tracking-tight text-brand-red";
             } else {
                 btnA.className = "py-3 px-1 text-sm font-bold uppercase tracking-widest text-avon-primary border-b-[3px] border-avon-primary transition-all duration-300";
-                btnN.className = "py-3 px-1 text-sm font-bold uppercase tracking-widest text-text-mut border-b-[3px] border-transparent hover:text-brand-pink transition-all duration-300";
+                btnN.className = "py-3 px-1 text-sm font-bold uppercase tracking-widest text-gray-400 border-b-[3px] border-transparent hover:text-brand-red transition-all duration-300";
                 title.textContent = "Avon";
                 title.className = "text-2xl font-bold tracking-tight text-avon-primary";
             }
@@ -292,7 +289,7 @@
                         await navigator.share({
                             files: [file],
                             title: desc,
-                            text: `Mirá este regalo para Mamá: ${desc} (Cód: ${cod})`
+                            text: `Mirá este regalo de Preventa 2026 🎄: ${desc} (Cód: ${cod})`
                         });
                         return;
                     }
@@ -313,20 +310,18 @@
             }
         }
 
-        // FUNCIÓN DESCARGA DE EXCEL (AHORA DESCARGA NATURA Y AVON JUNTOS)
         function exportToExcel() {
             if (!db.site || db.site.length === 0) {
                 Swal.fire({
                     title: 'Sin datos',
                     text: 'Aún no se han cargado los datos para exportar.',
                     icon: 'warning',
-                    confirmButtonColor: '#E04886'
+                    confirmButtonColor: '#9B111E'
                 });
                 return;
             }
 
             const rows = [];
-            // Tomamos todos los ítems de la base de datos sin filtrar por solapa
             let allItems = db.site;
 
             const selectedGerenciaId = state.gerenciaId;
@@ -395,10 +390,10 @@
             ];
 
             const workbook = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(workbook, worksheet, `Showroom Completo`);
+            XLSX.utils.book_append_sheet(workbook, worksheet, `Preventa 2026`);
 
             const dateStr = new Date().toISOString().slice(0, 10);
-            XLSX.writeFile(workbook, `Showroom_Natura_y_Avon_${dateStr}.xlsx`);
+            XLSX.writeFile(workbook, `Showroom_Preventa_2026_Natura_y_Avon_${dateStr}.xlsx`);
         }
 
         function render() {
@@ -431,7 +426,7 @@
 
                 filtered.forEach((item, idx) => {
                     const card = document.createElement('div');
-                    card.className = "animate-fade-in bg-white rounded-2xl border border-pink-100 shadow-soft hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden";
+                    card.className = "animate-fade-in bg-white rounded-2xl border-2 border-yellow-500/20 shadow-festive hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden";
                     card.style.animationDelay = `${idx * 0.05}s`;
 
                     const carousel = document.createElement('div');
@@ -442,7 +437,7 @@
                         slide.className = "min-w-full snap-start p-5 flex flex-col";
                         
                         const isMain = plan.type === 'A';
-                        const badgeColor = isMain ? (state.tab === 'Natura' ? 'bg-brand-pink' : 'bg-avon-primary') : 'bg-gray-800';
+                        const badgeColor = isMain ? (state.tab === 'Natura' ? 'bg-brand-red' : 'bg-avon-primary') : 'bg-gray-800';
                         
                         let quotaHTML = "";
                         if (state.gerenciaId) {
@@ -470,8 +465,8 @@
                             }
                         } else {
                             quotaHTML = `
-                                <span class="text-[10px] text-text-mut font-medium italic flex items-center gap-1">
-                                    <i data-lucide="info" class="w-3 h-3 text-brand-pink"></i> Elegí Gerencia para ver cuota
+                                <span class="text-[10px] text-gray-500 font-medium italic flex items-center gap-1">
+                                    <i data-lucide="info" class="w-3 h-3 text-brand-red"></i> Elegí Gerencia para ver cuota
                                 </span>`;
                         }
 
@@ -489,20 +484,20 @@
 
                                 <button onclick="shareImage('${imgPath}', '${plan.cod}', '${safeDesc}')" 
                                    title="${isMobile ? 'Compartir' : 'Descargar'}"
-                                   class="absolute top-2 right-2 z-20 w-8 h-8 flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-full text-brand-pink shadow-sm hover:bg-brand-pink hover:text-white transition-all cursor-pointer border border-pink-100">
+                                   class="absolute top-2 right-2 z-20 w-8 h-8 flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-full text-brand-red shadow-sm hover:bg-brand-red hover:text-white transition-all cursor-pointer border border-red-100">
                                     <i data-lucide="${actionIcon}" class="w-4 h-4"></i>
                                 </button>
 
-                                <div class="aspect-square bg-brand-gray rounded-xl flex items-center justify-center p-6 border border-pink-50/60">
+                                <div class="aspect-square bg-gray-50 rounded-xl flex items-center justify-center p-6 border border-gray-100">
                                     <img src="${imgPath}" 
-                                         onerror="this.src='https://placehold.co/400x400/FFF5F8/E04886?text=Próximamente'" 
+                                         onerror="this.src='https://placehold.co/400x400/FFF5F5/9B111E?text=Próximamente'" 
                                          class="max-w-full max-h-full object-contain mix-blend-multiply">
                                 </div>
                             </div>
                             <div class="flex-1 flex flex-col">
-                                <span class="text-[10px] text-brand-pink font-bold tracking-widest uppercase mb-1">Cód: ${plan.cod}</span>
-                                <h4 class="text-sm font-bold text-text-main leading-tight mb-4 flex-1 line-clamp-2">${plan.desc}</h4>
-                                <div class="pt-3 border-t border-pink-100/60 flex items-center justify-between">
+                                <span class="text-[10px] text-brand-red font-bold tracking-widest uppercase mb-1">Cód: ${plan.cod}</span>
+                                <h4 class="text-sm font-bold text-gray-800 leading-tight mb-4 flex-1 line-clamp-2">${plan.desc}</h4>
+                                <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
                                     ${quotaHTML}
                                 </div>
                             </div>
@@ -513,7 +508,7 @@
                     card.appendChild(carousel);
                     if (item.plans.length > 1) {
                         const info = document.createElement('div');
-                        info.className = "px-5 pb-4 text-[9px] font-bold uppercase tracking-[0.2em] text-brand-pink flex items-center gap-2";
+                        info.className = "px-5 pb-4 text-[9px] font-bold uppercase tracking-[0.2em] text-brand-red flex items-center gap-2";
                         info.innerHTML = `<i data-lucide="arrow-left-right" class="w-3"></i> Desliza para ver alternativas`;
                         card.appendChild(info);
                     }
