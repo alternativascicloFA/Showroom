@@ -96,7 +96,7 @@
 
 <body class="text-text-main font-sans antialiased min-h-screen flex flex-col">
 
-    <!-- Header Blanco Puro sin Transparencias -->
+    <!-- Header Blanco Puro -->
     <header class="bg-white border-b-2 border-brand-gold shadow-festive sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 relative">
             
@@ -434,7 +434,8 @@
                     
                     item.plans.forEach(plan => {
                         const slide = document.createElement('div');
-                        slide.className = "min-w-full snap-start p-5 flex flex-col";
+                        // Reduje el padding de p-5 a p-4 para darle más ancho todavía a la imagen
+                        slide.className = "min-w-full snap-start p-4 flex flex-col";
                         
                         const isMain = plan.type === 'A';
                         const badgeColor = isMain ? (state.tab === 'Natura' ? 'bg-brand-red' : 'bg-avon-primary') : 'bg-gray-800';
@@ -488,7 +489,8 @@
                                     <i data-lucide="${actionIcon}" class="w-4 h-4"></i>
                                 </button>
 
-                                <div class="aspect-square bg-white rounded-xl flex items-center justify-center border border-gray-100 overflow-hidden">
+                                <!-- ACÁ ESTA LA CORRECCIÓN: Le saqué el p-6, y la imagen ocupa el ancho total (w-full h-full object-contain) -->
+                                <div class="w-full aspect-square bg-white rounded-xl border border-gray-100 overflow-hidden flex items-center justify-center">
                                     <img src="${imgPath}" 
                                          onerror="this.src='https://placehold.co/400x400/FFF5F5/9B111E?text=Próximamente'" 
                                          class="w-full h-full object-contain mix-blend-multiply">
