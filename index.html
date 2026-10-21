@@ -265,20 +265,24 @@
             render();
         }
 
+        // ==========================================
+        // AQUÍ ESTÁ EL CAMBIO MAGICO: AHORA BUSCA .png
+        // ==========================================
         function getImg(marca, cod, type) {
             const folder = type === 'A' ? marca.trim() : 'Alternativas';
-            return `./imagenes/${folder}/${cod}.jpg`;
+            return `./imagenes/${folder}/${cod}.png`;
         }
 
         async function shareImage(url, cod, desc) {
-            const fileName = `${cod}_${desc.replace(/[^a-z0-9]/gi, '_')}.jpg`;
+            const fileName = `${cod}_${desc.replace(/[^a-z0-9]/gi, '_')}.png`;
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             
             try {
                 if (isMobile && navigator.canShare && navigator.share) {
                     const response = await fetch(url);
                     const blob = await response.blob();
-                    const file = new File([blob], fileName, { type: "image/jpeg" });
+                    // Usamos image/png porque estamos descargando un PNG
+                    const file = new File([blob], fileName, { type: "image/png" });
 
                     if (navigator.canShare({ files: [file] })) {
                         await navigator.share({
