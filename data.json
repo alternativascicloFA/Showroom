@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-10-21T20:57:53Z",
+    "updatedAt":  "2026-10-21T21:40:09Z",
     "site":  [
                  {
                      "plans":  [
@@ -11,7 +11,7 @@
                                    {
                                        "type":  "B",
                                        "desc":  "Regalo Preventa - Paz y humor",
-                                       "cod":  "274188"
+                                       "cod":  "281675"
                                    }
                                ],
                      "marca":  "Natura"
@@ -27,6 +27,21 @@
                                        "type":  "B",
                                        "desc":  "Regalo Preventa - Ciruela y vainilla",
                                        "cod":  "281659"
+                                   }
+                               ],
+                     "marca":  "Natura"
+                 },
+                 {
+                     "plans":  [
+                                   {
+                                       "type":  "A",
+                                       "desc":  "Essencial perfume + manos",
+                                       "cod":  "282836"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Regalo essencial",
+                                       "cod":  "281677"
                                    }
                                ],
                      "marca":  "Natura"
