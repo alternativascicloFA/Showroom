@@ -266,15 +266,14 @@
         }
 
         // ==========================================
-        // SISTEMA INTELIGENTE DE IMÁGENES
+        // SISTEMA INTELIGENTE DE IMÁGENES (PRIORIZA .png)
         // ==========================================
         function getImg(marca, cod, type) {
             const brandFolder = marca.trim();
             if (type === 'A') {
-                return `./Imagenes/${brandFolder}/${cod}.jpg`;
+                return `./Imagenes/${brandFolder}/${cod}.png`; // <-- AHORA LA PRIMERA OPCIÓN ES PNG
             } else {
-                // Adapta el nombre al formato que tenés en tu carpeta
-                return `./Imagenes/${brandFolder}/placa_${cod}_plan_${type.toLowerCase()}.jpg`;
+                return `./Imagenes/${brandFolder}/placa_${cod}_plan_${type.toLowerCase()}.png`; // <-- AHORA LA PRIMERA OPCIÓN ES PNG
             }
         }
 
@@ -287,21 +286,21 @@
             let fallbacks = [];
             if (type === 'A') {
                 fallbacks = [
-                    `./Imagenes/${brandFolder}/${cod}.png`,
+                    `./Imagenes/${brandFolder}/${cod}.jpg`, // Plan de rescate 1: .jpg
                     `./Imagenes/${brandFolder}/${cod}.JPG`,
+                    `./Imagenes/${brandFolder}/${cod}.PNG`,
                     `./imagenes/${brandFolder}/${cod}.jpg`,
                     `./imagenes/${brandFolder}/${cod}.png`
                 ];
             } else {
                 fallbacks = [
-                    `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}.png`,
+                    `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}.jpg`,
                     `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}.JPG`,
+                    `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}.PNG`,
                     `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}_preventa.jpg`,
                     `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}_preventa.png`,
-                    `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}_titulo_kit.jpg`,
-                    `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}_titulo_kit.png`,
-                    `./Alternativas/${cod}.jpg`,
-                    `./Alternativas/${cod}.png`
+                    `./Alternativas/${cod}.png`,
+                    `./Alternativas/${cod}.jpg`
                 ];
             }
             
@@ -315,14 +314,14 @@
         }
 
         async function shareImage(url, cod, desc) {
-            const fileName = `${cod}_${desc.replace(/[^a-z0-9]/gi, '_')}.jpg`;
+            const fileName = `${cod}_${desc.replace(/[^a-z0-9]/gi, '_')}.png`; // Comparte como png
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             
             try {
                 if (isMobile && navigator.canShare && navigator.share) {
                     const response = await fetch(url);
                     const blob = await response.blob();
-                    const file = new File([blob], fileName, { type: "image/jpeg" });
+                    const file = new File([blob], fileName, { type: "image/png" });
 
                     if (navigator.canShare({ files: [file] })) {
                         await navigator.share({
