@@ -266,23 +266,63 @@
         }
 
         // ==========================================
-        // AQUÍ ESTÁ EL CAMBIO MAGICO: AHORA BUSCA .png
+        // SISTEMA INTELIGENTE DE IMÁGENES
         // ==========================================
         function getImg(marca, cod, type) {
-            const folder = type === 'A' ? marca.trim() : 'Alternativas';
-            return `./imagenes/${folder}/${cod}.png`;
+            const brandFolder = marca.trim();
+            if (type === 'A') {
+                return `./Imagenes/${brandFolder}/${cod}.jpg`;
+            } else {
+                // Adapta el nombre al formato que tenés en tu carpeta
+                return `./Imagenes/${brandFolder}/placa_${cod}_plan_${type.toLowerCase()}.jpg`;
+            }
+        }
+
+        function handleImageError(img, marca, cod, type) {
+            if (!img.dataset.tryStep) img.dataset.tryStep = "1";
+            const step = parseInt(img.dataset.tryStep);
+            const brandFolder = marca.trim();
+            const planLetra = type.toLowerCase();
+            
+            let fallbacks = [];
+            if (type === 'A') {
+                fallbacks = [
+                    `./Imagenes/${brandFolder}/${cod}.png`,
+                    `./Imagenes/${brandFolder}/${cod}.JPG`,
+                    `./imagenes/${brandFolder}/${cod}.jpg`,
+                    `./imagenes/${brandFolder}/${cod}.png`
+                ];
+            } else {
+                fallbacks = [
+                    `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}.png`,
+                    `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}.JPG`,
+                    `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}_preventa.jpg`,
+                    `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}_preventa.png`,
+                    `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}_titulo_kit.jpg`,
+                    `./Imagenes/${brandFolder}/placa_${cod}_plan_${planLetra}_titulo_kit.png`,
+                    `./Alternativas/${cod}.jpg`,
+                    `./Alternativas/${cod}.png`
+                ];
+            }
+            
+            if (step <= fallbacks.length) {
+                img.src = fallbacks[step - 1];
+                img.dataset.tryStep = (step + 1).toString();
+            } else {
+                img.src = 'https://placehold.co/400x400/FFF5F5/9B111E?text=Próximamente';
+                img.onerror = null;
+            }
         }
 
         async function shareImage(url, cod, desc) {
-            const fileName = `${cod}_${desc.replace(/[^a-z0-9]/gi, '_')}.png`;
+            const fileName = `${cod}_${desc.replace(/[^a-z0-9]/gi, '_')}.jpg`;
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             
             try {
                 if (isMobile && navigator.canShare && navigator.share) {
                     const response = await fetch(url);
                     const blob = await response.blob();
-                    // Usamos image/png porque estamos descargando un PNG
-                    const file = new File([blob], fileName, { type: "image/png" });
+                    const file = new File([blob], fileName, { type: "image/jpeg" });
 
                     if (navigator.canShare({ files: [file] })) {
                         await navigator.share({
@@ -472,6 +512,7 @@
                         const actionIcon = isMobile ? 'share-2' : 'download';
                         const imgPath = getImg(item.marca, plan.cod, plan.type);
                         const safeDesc = plan.desc.replace(/'/g, "\\'");
+                        const safeMarca = item.marca.replace(/'/g, "\\'");
                         
                         slide.innerHTML = `
                             <div class="relative mb-4">
@@ -489,7 +530,7 @@
 
                                 <div class="w-full aspect-square bg-white rounded-xl border border-gray-100 overflow-hidden flex items-center justify-center">
                                     <img src="${imgPath}" 
-                                         onerror="this.src='https://placehold.co/400x400/FFF5F5/9B111E?text=Próximamente'" 
+                                         onerror="handleImageError(this, '${safeMarca}', '${plan.cod}', '${plan.type}')" 
                                          class="w-full h-full object-contain mix-blend-multiply">
                                 </div>
                             </div>
