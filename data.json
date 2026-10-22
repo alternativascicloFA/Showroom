@@ -1,5 +1,5 @@
 ﻿{
-    "updatedAt":  "2026-10-22T14:15:49Z",
+    "updatedAt":  "2026-10-22T19:30:33Z",
     "site":  [
                  {
                      "plans":  [
@@ -27,6 +27,11 @@
                                        "type":  "B",
                                        "desc":  "Regalo Preventa - Ciruela y vainilla",
                                        "cod":  "281659"
+                                   },
+                                   {
+                                       "type":  "C",
+                                       "desc":  "RG preventa frambuesa y pimienta",
+                                       "cod":  "281700"
                                    }
                                ],
                      "marca":  "Natura"
@@ -67,6 +72,21 @@
                                        "type":  "A",
                                        "desc":  "Aura - Limitado 25 unidades por CB",
                                        "cod":  "282837"
+                                   }
+                               ],
+                     "marca":  "Natura"
+                 },
+                 {
+                     "plans":  [
+                                   {
+                                       "type":  "A",
+                                       "desc":  "Jabones regalables",
+                                       "cod":  "282840"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Jabones tododia frambuesa",
+                                       "cod":  "2831"
                                    }
                                ],
                      "marca":  "Natura"
