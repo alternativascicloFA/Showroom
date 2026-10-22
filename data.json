@@ -1,11 +1,11 @@
 ﻿{
-    "updatedAt":  "2026-10-22T12:33:45Z",
+    "updatedAt":  "2026-10-22T14:15:49Z",
     "site":  [
                  {
                      "plans":  [
                                    {
                                        "type":  "A",
-                                       "desc":  "Regalo Preventa - Paz y humor jb + pf + gel",
+                                       "desc":  "Regalo Preventa - Paz y humor",
                                        "cod":  "282848"
                                    },
                                    {
@@ -42,6 +42,31 @@
                                        "type":  "B",
                                        "desc":  "Regalo essencial",
                                        "cod":  "281677"
+                                   }
+                               ],
+                     "marca":  "Natura"
+                 },
+                 {
+                     "plans":  [
+                                   {
+                                       "type":  "A",
+                                       "desc":  "Kit tododia granada y almendras glas",
+                                       "cod":  "282847"
+                                   },
+                                   {
+                                       "type":  "B",
+                                       "desc":  "Tododia Nix completo",
+                                       "cod":  "267498"
+                                   }
+                               ],
+                     "marca":  "Natura"
+                 },
+                 {
+                     "plans":  [
+                                   {
+                                       "type":  "A",
+                                       "desc":  "Aura - Limitado 25 unidades por CB",
+                                       "cod":  "282837"
                                    }
                                ],
                      "marca":  "Natura"
